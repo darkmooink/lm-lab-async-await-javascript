@@ -13,7 +13,15 @@ const promise = new Promise((resolve, reject) => {
 
 // Your solution(s) to exercise001 here!
 promise.then((result)=>{
-	console.log(`Yay! Promise resolved with response: ${result}`)
+	produceOutput(result, true)
 }).catch((result)=>{
-	console.log(`Boo. Promise rejected with response: ${result}`)
+	produceOutput(result, false)
 })
+
+function produceOutput(output, wasSucess){
+	if(wasSucess){
+		console.log(`Yay! Promise resolved with response: ${output}`)
+	} else {
+		console.log(`Boo. Promise rejected with response: ${output}`)
+	}
+}
