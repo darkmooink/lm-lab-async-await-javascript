@@ -1,7 +1,7 @@
 const promise = new Promise((resolve, reject) => {
 	// Generate random number between 0 and 9
 	const randomInt = Math.floor(Math.random() * 10);
-
+	console.log(randomInt)
 	if (randomInt % 2 === 0) {
 		// Success
 		setTimeout(() => resolve('done'), 2000);
@@ -10,13 +10,17 @@ const promise = new Promise((resolve, reject) => {
 		setTimeout(() => reject('error'), 2000);
 	}
 });
-
 // Your solution(s) to exercise001 here!
-promise.then((result)=>{
-	produceOutput(result, true)
-}).catch((result)=>{
-	produceOutput(result, false)
-})
+
+async function run(){
+	try{
+		const result = await promise
+		produceOutput(result, true)
+	}catch (e){
+		produceOutput(e, false)
+	}
+}
+run()
 
 function produceOutput(output, wasSucess){
 	if(wasSucess){
